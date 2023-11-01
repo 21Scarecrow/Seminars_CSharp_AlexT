@@ -3,7 +3,7 @@
 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19] 
 6, 1, 33 -> [6, 1, 33] */
 
-void FillArray(string[] args, int size)
+void EnteringArray(string[] args, int size)
 {
     int N = size; // размер массива
     double[] a = new double[N]; // массив
@@ -33,10 +33,11 @@ void FillArray(string[] args, int size)
     Console.Write("\n\nPress any key...");
     Console.ReadKey();
 }
+
 Console.Clear();
 System.Console.WriteLine("Введите размер массива");
 int size = int.Parse(Console.ReadLine());
 
 string[] userArray = new string[size];
 
-FillArray(userArray, size);
+EnteringArray(userArray, size);
