@@ -14,8 +14,8 @@ void CrossPointLine(double k1, double b1, double k2, double b2)
 {
     double x = (b2 - b1) / (k1 - k2);
     double y = k2 * x + b2;
-    
-    System.Console.WriteLine($"\nТочка пересечения прямых: [{x}; {y}]");
+    if (k1 == k2) System.Console.WriteLine("Прямые не пересекаются");
+    else System.Console.WriteLine($"\nТочка пересечения прямых: [{x}; {y}]");
 }
 Console.Clear();
 double k1Number = Prompt("Enter the k1: ");
