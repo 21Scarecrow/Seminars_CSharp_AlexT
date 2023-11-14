@@ -45,22 +45,33 @@ void PrintArray(int[,] matr)
     System.Console.WriteLine();
 }
 
-int[,] CreateRandomMatrix(int m, int n, int min, int max)
+int[,] CreateRandomMatrix(int m, int n)
 {
     int[,] matr = new int[m, n];
     for (int i = 0; i < matr.GetLength(0); i++)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
         {
-            matr[i, j] = new Random().Next(min, max + 1);
+            matr[i, j] = new Random().Next(0, 11);
         }
     }
     return matr;
 }
-
-void ArrayDictionary(int[,] array, int max)
+int FindMax(int[,] array)
 {
-    for (int k = 0; k <= max; k++)
+    int max = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if(array[i, j] > max) max = array[i, j];
+        }
+    }
+    return max;
+}
+void ArrayDictionary(int[,] array)
+{
+    for (int k = 0; k <= FindMax(array); k++)
     {
         int count = 0;
         for (int i = 0; i < array.GetLength(0); i++)
@@ -78,9 +89,7 @@ Console.Clear();
 
 int mRow = Prompt("Enter the raw: ");
 int nCol = Prompt("Enter the calumn: ");
-int minLimitRandom = Prompt("Enter the minLimit: ");
-int maxLimitRandom = Prompt("Enter the maxLimit: ");
-int[,] userArray = CreateRandomMatrix(mRow, nCol, minLimitRandom, maxLimitRandom);
+int[,] userArray = CreateRandomMatrix(mRow, nCol);
 PrintArray(userArray);
 System.Console.WriteLine();
-ArrayDictionary(userArray, maxLimitRandom);
+ArrayDictionary(userArray);
