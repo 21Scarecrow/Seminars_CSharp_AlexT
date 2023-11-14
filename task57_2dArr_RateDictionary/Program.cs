@@ -45,30 +45,32 @@ void PrintArray(int[,] matr)
     System.Console.WriteLine();
 }
 
-int[,] CreateRandomMatrix(int m, int n)
+int[,] CreateRandomMatrix(int m, int n, int min, int max)
 {
     int[,] matr = new int[m, n];
     for (int i = 0; i < matr.GetLength(0); i++)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
         {
-            matr[i, j] = new Random().Next(0, 3);
+            matr[i, j] = new Random().Next(min, max + 1);
         }
     }
     return matr;
 }
 
-void ArrayDictionary(int[,] array)
+void ArrayDictionary(int[,] array, int max)
 {
-    int count = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int k = 0; k <= max; k++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        int count = 0;
+        for (int i = 0; i < array.GetLength(0); i++)
         {
-            if(array[i, j] == array [i, j]) count++;
-            System.Console.WriteLine($"{array[i, j]} встречается {count} раз");
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                if (k == array[i, j]) count++;
+            }
         }
-        
+        System.Console.WriteLine($"{k} встречается {count} раз");
     }
 }
 
@@ -76,7 +78,9 @@ Console.Clear();
 
 int mRow = Prompt("Enter the raw: ");
 int nCol = Prompt("Enter the calumn: ");
-int[,] userArray = CreateRandomMatrix(mRow, nCol);
+int minLimitRandom = Prompt("Enter the minLimit: ");
+int maxLimitRandom = Prompt("Enter the maxLimit: ");
+int[,] userArray = CreateRandomMatrix(mRow, nCol, minLimitRandom, maxLimitRandom);
 PrintArray(userArray);
 System.Console.WriteLine();
-ArrayDictionary(userArray);
+ArrayDictionary(userArray, maxLimitRandom);
