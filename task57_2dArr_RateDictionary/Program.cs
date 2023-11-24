@@ -57,6 +57,7 @@ int[,] CreateRandomMatrix(int m, int n)
     }
     return matr;
 }
+/*
 int FindMax(int[,] array)
 {
     int max = 0;
@@ -68,20 +69,20 @@ int FindMax(int[,] array)
         }
     }
     return max;
-}
+} */
 void ArrayDictionary(int[,] array)
 {
-    for (int k = 0; k <= FindMax(array); k++)
+    foreach (int el in array)
     {
         int count = 0;
         for (int i = 0; i < array.GetLength(0); i++)
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
-                if (k == array[i, j]) count++;
+                if (el == array[i, j]) count++;
             }
         }
-        System.Console.WriteLine($"{k} встречается {count} раз");
+        System.Console.WriteLine($"{el} встречается {count} раз");
     }
 }
 
